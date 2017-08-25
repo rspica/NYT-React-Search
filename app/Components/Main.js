@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 
 // // include all of the sub-components
-import { Search } from "./children/Search";
+import Search from "./children/Search";
 //import { Results } from "./children/Results";
 // import Saved from "./children/Saved"
-import { hello } from "./children/hello";
+import Hello from "./children/hello";
 
 // // Helper Function
 // var helpers = require("./utils/helpers");
@@ -51,13 +51,13 @@ export default class Main extends Component {
               <em>Search for and annotate articles of interest.</em>
             </p>
           </div>
+
           <div className="col-md-6">
-            <hello />
+            <Hello className="asdf"/>
           </div>
           <div className="col-md-6">
             <Search />
           </div>
-
         </div>
       </div>
     );
