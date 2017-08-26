@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Input from "./parts-bin/Input";
 import Btn from "./parts-bin/Btn"
 
+// test line to delete
+
   // // Here we set a generic state associated with the text being searched for
   // getInitialState: function() {
   //   return { term: "" };
