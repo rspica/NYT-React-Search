@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
-
+import Input from "./parts-bin/Input";
+import Btn from "./parts-bin/Btn"
 
   // // Here we set a generic state associated with the text being searched for
   // getInitialState: function() {
@@ -31,32 +32,65 @@ import React, { Component } from "react";
   // Here we describe this component's render method and export the component back for use in other files
 export default class Search extends Component {
   render() {
+    var formStyle = {
+      backGroundColor: 'red'
+    };
+
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title text-center">Search Parameters</h3>
+          <h3 className="panel-title">Search Parameters</h3>
         </div>
-        <div className="panel-body text-center">
+        <div className="panel-body">
+        
+          <form  style={formStyle}>
+            <div>
+              <Input placeholder={ "Enter search topic for New York Times articles " } id={ "Search" } label={ "Subject:" } />
+            </div>
+            <br />
 
-         
+             
+              <Input placeholder={ "Enter a search start date (from Sept 18, 1851)" } id={ "start-Yr" } label={ "Start Year:" } />
+            
+            <br />
+
+            
+              <Input placeholder={ "Enter a search end date (to toady's date)" } id={ "end-Yr" } label={ "Start Year:" } />
+            </form>
+            <br />
+
+            <div class="panel-footer">
+              <div class="text-right">
+                <Btn label={ "Find It" } btnIcon={ "glyphicons glyphicons-search"} />
+                <Btn label={ "Clear" }/>
+              </div>
+            </div>
+          
         </div>
       </div>
     );
   }
+}
+
+Search.propTypes = {
+  placeholder: React.PropTypes.string,
+  id: React.PropTypes.string,
+  label: React.PropTypes.string
 };
 
 
- // <form onSubmit={this.handleSubmit}>
+
+  {/*// <form onSubmit={this.handleSubmit}>
  //            <div className="form-group">
  //              <h4 className="">
  //                <strong>Location</strong>
  //              </h4>
 
- //              {/*
+ //             
  //                Note how each of the form elements has an id that matches the state.
  //                This is not necessary but it is convenient.
  //                Also note how each has an onChange event associated with our handleChange function.
- //              */}
+ //              
             
 
  //              <div class="form-group">
@@ -122,7 +156,7 @@ export default class Search extends Component {
  //            </div>
  //          </form>
 
-
+*/}
 
 
 

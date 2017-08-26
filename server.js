@@ -4,13 +4,16 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+// Adds console.log flair for easier reading on reporting
+const chalk = require('chalk');
+
 // Require Article Schema
 var Article = require("./models/Article");
 
 // Create Instance of Express
 var app = express();
-// Sets an initial port. We'll use this later in our listener
-var PORT = process.env.PORT || 3000;
+
+app.set( 'port', process.env.PORT || 3000 );
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -23,16 +26,16 @@ app.use(express.static("public"));
 
 // -------------------------------------------------
 
-// MongoDB Configuration configuration (Change this URL to your own DB)
+// MongoDB Configuration, connection and success/error handler
 mongoose.connect("mongodb://127.0.0.1/NYT-React-data");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
-  console.log("Mongoose Error: ", err);
+    console.log(chalk.bold.gray("Mongoose connection error: "), chalk.redBright(err));
 });
 
 db.once("open", function() {
-  console.log("Mongoose connection successful.");
+  console.log(chalk.bold.bgYellowBright(" ** Mongoose connection successful ** "));
 });
 
 // -------------------------------------------------
@@ -47,7 +50,7 @@ app.get("/", function(req, res) {
 app.get("/api", function(req, res) {
 
   // We will find all the records, sort it in descending order, then limit the records to 5
-  History.find({}).sort([
+  Article.find({}).sort([
     ["date", "descending"]
   ]).limit(5).exec(function(err, doc) {
     if (err) {
@@ -65,7 +68,7 @@ app.post("/api", function(req, res) {
 
   // Here we'll save the location based on the JSON input.
   // We'll use Date.now() to always get the current date time
-  History.create({
+  Article.create({
     location: req.body.location,
     date: Date.now()
   }, function(err) {
@@ -81,6 +84,9 @@ app.post("/api", function(req, res) {
 // -------------------------------------------------
 
 // Listener
-app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
+app.listen(app.get('port'), function(err) {
+  if (err) {
+    console.error(chalk.bold.gray("No connection made "), chalk.redBright(err));
+  }
+  (chalk.bgYellow('Hello, running on port: ') + app.get('port'));
 });

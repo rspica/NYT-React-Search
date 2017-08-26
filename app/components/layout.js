@@ -3,9 +3,8 @@ import React, { Component } from "react";
 
 // // include all of the sub-components
 import Search from "./children/Search";
-//import { Results } from "./children/Results";
-// import Saved from "./children/Saved"
-import Hello from "./children/hello";
+import  Results  from "./children/Results";
+import Saved from "./children/Saved";
 
 // // Helper Function
 // var helpers = require("./utils/helpers");
@@ -40,32 +39,41 @@ import Hello from "./children/hello";
 
 
 // Sets up the main components and Export it back for use in other files
-export default class Main extends Component {
+export default class Layout extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <div className="jumbotron">
-            <h1 className="text-center">New York Times Search</h1>
-            <p className="text-center">
-              <em>Search for and annotate articles of interest.</em>
-            </p>
-          </div>
+        
+        <div className="jumbotron">
+          <h1><span className="glyphicons glyphicons-newspaper"></span></h1>
+          <h1 className="text-center">New York Times Search</h1>
+          <p className="text-center">
+          <em>Search for and annotate articles of interest.</em>
+          </p>
+        </div>
 
-          <div className="col-md-6">
-            <Hello className="asdf"/>
-          </div>
-          <div className="col-md-6">
-            <Search />
+        <div className="row">
+            <div className="col-md-12">
+              <Search />
+            </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <Results />
           </div>
         </div>
+
+
+
+
       </div>
     );
   }
 };
 
 
-
+{/*
 
 
         // <div className="col-md-6">
@@ -83,6 +91,6 @@ export default class Main extends Component {
 
   //           <SavedArticles address={this.state.results} />
 
-  //         </div>*/
+  //         </div>
 
-
+*/}

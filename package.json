@@ -4,16 +4,18 @@
   "description": "",
   "main": "public/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "tester": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack -w & node server",
     "start": "node server",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "webpack-dev-server & node server"
   },
-  "author": "Robert SPica",
-  "license": "MIT",
+  "author": "Robert Spica",
+  "license": "ISC",
   "dependencies": {
     "axios": "^0.12.0",
     "body-parser": "^1.15.2",
+    "chalk": "^2.1.0",
     "express": "^4.14.0",
     "mongoose": "^4.5.1",
     "morgan": "^1.7.0",
@@ -25,6 +27,7 @@
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.16.5"
   }
 }
